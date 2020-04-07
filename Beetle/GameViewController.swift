@@ -6,14 +6,14 @@
 //  Copyright © 2017 Muskan. All rights reserved.
 //
 
-import UIKit
 import SpriteKit
+import UIKit
 
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let scene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
         skView.showsFPS = false
@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     }
 
     override var shouldAutorotate: Bool {
-        return false
+        false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -41,6 +41,6 @@ class GameViewController: UIViewController {
     }
 
     override var prefersStatusBarHidden: Bool {
-        return true
+        true
     }
 }
