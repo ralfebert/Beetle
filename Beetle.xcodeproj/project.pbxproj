@@ -15,6 +15,9 @@
 		D9E9D9401E3483AA00754A1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D93E1E3483AA00754A1A /* Main.storyboard */; };
 		D9E9D9421E3483AA00754A1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9411E3483AA00754A1A /* Assets.xcassets */; };
 		D9E9D9451E3483AA00754A1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9431E3483AA00754A1A /* LaunchScreen.storyboard */; };
+		D9E9D94D1E3484B900754A1A /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D94C1E3484B900754A1A /* GameElements.swift */; };
+		D9E9D94F1E34855300754A1A /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D94E1E34855300754A1A /* CoinSound.mp3 */; };
+		D9E9D9531E34A13100754A1A /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9521E34A13100754A1A /* player.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		D9E9D9411E3483AA00754A1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9E9D9441E3483AA00754A1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9E9D9461E3483AA00754A1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9E9D94C1E3484B900754A1A /* GameElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
+		D9E9D94E1E34855300754A1A /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CoinSound.mp3; sourceTree = "<group>"; };
+		D9E9D9521E34A13100754A1A /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,13 @@
 				D9E9D9381E3483AA00754A1A /* Actions.sks */,
 				D9E9D93A1E3483AA00754A1A /* GameScene.swift */,
 				D9E9D93C1E3483AA00754A1A /* GameViewController.swift */,
+				D9E9D94C1E3484B900754A1A /* GameElements.swift */,
 				D9E9D93E1E3483AA00754A1A /* Main.storyboard */,
 				D9E9D9411E3483AA00754A1A /* Assets.xcassets */,
 				D9E9D9431E3483AA00754A1A /* LaunchScreen.storyboard */,
 				D9E9D9461E3483AA00754A1A /* Info.plist */,
+				D9E9D94E1E34855300754A1A /* CoinSound.mp3 */,
+				D9E9D9521E34A13100754A1A /* player.atlas */,
 			);
 			path = Beetle;
 			sourceTree = "<group>";
@@ -132,7 +141,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E9D9531E34A13100754A1A /* player.atlas in Resources */,
 				D9E9D9401E3483AA00754A1A /* Main.storyboard in Resources */,
+				D9E9D94F1E34855300754A1A /* CoinSound.mp3 in Resources */,
 				D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */,
 				D9E9D9421E3483AA00754A1A /* Assets.xcassets in Resources */,
 				D9E9D9451E3483AA00754A1A /* LaunchScreen.storyboard in Resources */,
@@ -147,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E9D94D1E3484B900754A1A /* GameElements.swift in Sources */,
 				D9E9D93B1E3483AA00754A1A /* GameScene.swift in Sources */,
 				D9E9D93D1E3483AA00754A1A /* GameViewController.swift in Sources */,
 				D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */,
@@ -272,7 +284,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Beetle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = muskan.Beetle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,7 +298,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Beetle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = muskan.Beetle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -311,6 +327,7 @@
 				D9E9D94B1E3483AA00754A1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
