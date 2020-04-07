@@ -143,7 +143,7 @@ extension GameScene{
         btmWall.physicsBody?.isDynamic = false
         btmWall.physicsBody?.affectedByGravity = false
         
-        topWall.zRotation = CGFloat(M_PI)
+        topWall.zRotation = .pi
         
         wallPair.addChild(topWall)
         wallPair.addChild(btmWall)
