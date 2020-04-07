@@ -8,13 +8,13 @@
 
 import SpriteKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene {
 
-    var gameStarted = Bool(false)
-    var died = Bool(false)
+    var gameStarted = false
+    var died = false
     let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
 
-    var score = Int(0)
+    var score = 0
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
     var taptoplayLbl = SKLabelNode()
@@ -24,11 +24,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var wallPair = SKNode()
     var moveAndRemove = SKAction()
 
-    // CREATE THE BIRD ATLAS FOR ANIMATION
-    let birdAtlas = SKTextureAtlas(named: "player")
     var birdSprites = [SKTexture]()
     var bird = SKSpriteNode()
     var repeatActionbird = SKAction()
+    var backgrounds = [SKSpriteNode]()
 
     override func didMove(to _: SKView) {
         self.createScene()
@@ -46,15 +45,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.bird.run(self.repeatActionbird)
 
             let spawn = SKAction.run {
-                () in
                 self.wallPair = self.createWalls()
                 self.addChild(self.wallPair)
             }
 
-            let delay = SKAction.wait(forDuration: 1.5)
-            let SpawnDelay = SKAction.sequence([spawn, delay])
-            let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
-            self.run(spawnDelayForever)
+            self.run(.repeatForever(.sequence([spawn, .wait(forDuration: 1.5)])))
 
             let distance = CGFloat(self.frame.width + self.wallPair.frame.width)
             let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
@@ -64,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             self.bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
         } else {
-            if self.died == false {
+            if !self.died {
                 self.bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 self.bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
             }
@@ -72,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         for touch in touches {
             let location = touch.location(in: self)
-            if self.died == true {
+            if self.died {
                 if self.restartBtn.contains(location) {
                     if UserDefaults.standard.object(forKey: "highestScore") != nil {
                         let hscore = UserDefaults.standard.integer(forKey: "highestScore")
@@ -86,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             } else {
                 if self.pauseBtn.contains(location) {
-                    if self.isPaused == false {
+                    if !self.isPaused {
                         self.isPaused = true
                         self.pauseBtn.texture = SKTexture(imageNamed: "play")
                     } else {
@@ -118,20 +113,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.backgroundColor = SKColor(red: 80.0 / 255.0, green: 192.0 / 255.0, blue: 203.0 / 255.0, alpha: 1.0)
 
-        for i in 0 ..< 2 {
+        self.backgrounds = (0...1).map { (i) in
             let background = SKSpriteNode(imageNamed: "bg")
             background.anchorPoint = CGPoint(x: 0, y: 0)
             background.position = CGPoint(x: CGFloat(i) * self.frame.width, y: 0)
             background.name = "background"
-            background.size = (self.view?.bounds.size)!
+            background.size = self.size
             self.addChild(background)
+            return background
         }
 
         // SET UP THE BIRD SPRITES FOR ANIMATION
-        self.birdSprites.append(self.birdAtlas.textureNamed("bird1"))
-        self.birdSprites.append(self.birdAtlas.textureNamed("bird2"))
-        self.birdSprites.append(self.birdAtlas.textureNamed("bird3"))
-        self.birdSprites.append(self.birdAtlas.textureNamed("bird4"))
+        let birdAtlas = SKTextureAtlas(named: "player")
+        self.birdSprites = birdAtlas.textureNames.sorted().map { birdAtlas.textureNamed($0) }
 
         self.bird = createBird()
         self.addChild(self.bird)
@@ -152,6 +146,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(self.taptoplayLbl)
     }
 
+    override func update(_: TimeInterval) {
+        // Called before each frame is rendered
+        if self.gameStarted, !self.died {
+            self.backgrounds.forEach { bg in
+                bg.position = CGPoint(x: bg.position.x - 2, y: bg.position.y)
+                if bg.position.x <= -bg.size.width {
+                    bg.position = CGPoint(x: bg.position.x + bg.size.width * 2, y: bg.position.y)
+                }
+            }
+        }
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
@@ -162,7 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.speed = 0
                 self.removeAllActions()
             }))
-            if self.died == false {
+            if !self.died {
                 self.died = true
                 createRestartBtn()
                 self.pauseBtn.removeFromParent()
@@ -181,19 +190,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func update(_: TimeInterval) {
-        // Called before each frame is rendered
-        if self.gameStarted == true {
-            if self.died == false {
-                enumerateChildNodes(withName: "background", using: ({
-                    node, _ in
-                    let bg = node as! SKSpriteNode
-                    bg.position = CGPoint(x: bg.position.x - 2, y: bg.position.y)
-                    if bg.position.x <= -bg.size.width {
-                        bg.position = CGPoint(x: bg.position.x + bg.size.width * 2, y: bg.position.y)
-                    }
-                }))
-            }
-        }
-    }
 }

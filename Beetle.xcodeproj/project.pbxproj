@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D9341E3483A900754A1A /* AppDelegate.swift */; };
-		D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9361E3483AA00754A1A /* GameScene.sks */; };
 		D9E9D93B1E3483AA00754A1A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D93A1E3483AA00754A1A /* GameScene.swift */; };
 		D9E9D93D1E3483AA00754A1A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D93C1E3483AA00754A1A /* GameViewController.swift */; };
 		D9E9D9401E3483AA00754A1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D93E1E3483AA00754A1A /* Main.storyboard */; };
@@ -16,13 +15,11 @@
 		D9E9D9451E3483AA00754A1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9431E3483AA00754A1A /* LaunchScreen.storyboard */; };
 		D9E9D94D1E3484B900754A1A /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D94C1E3484B900754A1A /* GameElements.swift */; };
 		D9E9D94F1E34855300754A1A /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D94E1E34855300754A1A /* CoinSound.mp3 */; };
-		D9E9D9531E34A13100754A1A /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9521E34A13100754A1A /* player.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D9E9D9311E3483A900754A1A /* Beetle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beetle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E9D9341E3483A900754A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9E9D9361E3483AA00754A1A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		D9E9D93A1E3483AA00754A1A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		D9E9D93C1E3483AA00754A1A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D9E9D93F1E3483AA00754A1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,7 +28,6 @@
 		D9E9D9461E3483AA00754A1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E9D94C1E3484B900754A1A /* GameElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		D9E9D94E1E34855300754A1A /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CoinSound.mp3; sourceTree = "<group>"; };
-		D9E9D9521E34A13100754A1A /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				D9E9D9341E3483A900754A1A /* AppDelegate.swift */,
-				D9E9D9361E3483AA00754A1A /* GameScene.sks */,
 				D9E9D93A1E3483AA00754A1A /* GameScene.swift */,
 				D9E9D93C1E3483AA00754A1A /* GameViewController.swift */,
 				D9E9D94C1E3484B900754A1A /* GameElements.swift */,
@@ -74,7 +69,6 @@
 				D9E9D9431E3483AA00754A1A /* LaunchScreen.storyboard */,
 				D9E9D9461E3483AA00754A1A /* Info.plist */,
 				D9E9D94E1E34855300754A1A /* CoinSound.mp3 */,
-				D9E9D9521E34A13100754A1A /* player.atlas */,
 			);
 			path = Beetle;
 			sourceTree = "<group>";
@@ -138,10 +132,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9E9D9531E34A13100754A1A /* player.atlas in Resources */,
 				D9E9D9401E3483AA00754A1A /* Main.storyboard in Resources */,
 				D9E9D94F1E34855300754A1A /* CoinSound.mp3 in Resources */,
-				D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */,
 				D9E9D9421E3483AA00754A1A /* Assets.xcassets in Resources */,
 				D9E9D9451E3483AA00754A1A /* LaunchScreen.storyboard in Resources */,
 			);
